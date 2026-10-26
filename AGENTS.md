@@ -1,0 +1,30 @@
+# Global Codex Guidance
+
+## Workspace Directory Policy
+
+- Do not proactively create `.codex` or `.agents` directories inside project or workspace directories.
+- Keep global Codex configuration, skills, memories, and custom agents under `C:\Users\ziping\.codex` by default.
+- Only touch project-scoped `.codex` or `.agents` directories when the user explicitly requests project-level configuration, or when such directories already exist and the task requires using them.
+- If a tool or workflow truly requires a project-scoped `.codex` directory, explain why first and wait for confirmation before creating it.
+
+## .MD Type Documentation Policy
+
+- Describe the current system, configuration, protocols, and implementation boundaries in usage guides, README files, and development documentation.
+- Omit abandoned approaches and irrelevant process history. Include historical context only when needed to explain the current design, compatibility, constraints, or unresolved issues.
+
+## Shared Node.js Dependencies
+
+- Default to the shared Node.js toolchain and dependencies in `D:\Node` for new projects, existing projects, and temporary scripts. Use project `node_modules` junctions instead of separate dependency installations.
+- Manage shared dependencies centrally with pnpm and pinned versions; preserve project manifests and lockfiles, and verify affected projects after changes. Do not install dependencies through a project junction.
+- Handle incompatible requirements under `D:\Node\environments` and preserve application-managed runtimes and bundled dependencies. See `D:\Node\README.md` for activation and operational details.
+
+## Office Document and Presentation Writing Policy
+
+- **Submission-ready deliverables:** Treat Word documents, PowerPoint presentations, reports, proposals, budget explanations, official correspondence, and other professional writing as finished materials ready for their intended use. Deliver polished, complete, logically coherent content. When information is sufficient, complete the work directly and make routine editorial decisions without repeated clarification.
+- **Purpose and style:** Adapt structure, terminology, tone, and detail to the purpose, audience, and professional conventions. Follow the user's templates, references, writing samples, and established preferences. Write professionally, concisely, and naturally; avoid generic AI phrasing, empty slogans, repetition, mechanical parallelism, inflated claims, and unnecessary explanations or defensive qualifications.
+- **Formal Chinese:** Use precise, restrained, natural formal Chinese, with substantive reasoning and clear progression between paragraphs. Avoid fragmented sections, redundant headings, and formulaic language. For legal and regulatory writing, use evidence-based, application-oriented language without unnecessary confrontation or lecturing. Keep punctuation, terminology, numbering, and units consistent; avoid unnecessary spaces around embedded English or numbers. Prefer context-appropriate time expressions while preserving specified dates and deadlines.
+- **Facts and editorial boundaries:** Preserve source meaning, technical details, terminology, figures, substantive requirements, and necessary qualifications. Do not invent missing facts or present estimates or unverified information as established facts. Keep conversational explanations, drafting history, internal discussions, unresolved editing notes, unsolicited disclaimers, and AI suggestions out of formal deliverables. Communicate estimates, factual gaps, uncertainties, technical or logical concerns, compliance questions, and proposed revisions separately in the accompanying chat for the user to decide how to address.
+- **Word documents:** Respect the supplied template, styles, page setup, margins, heading hierarchy, numbering, and formatting conventions. Use consistent fonts, paragraph indentation, spacing, and table formatting. Organize meaningful sections with smooth transitions, readable tables, and appropriate paragraph length. Preserve native editable text, tables, and other structured elements wherever practical.
+- **Presentation narrative:** Establish the deck's narrative before designing individual slides. Give each slide a clear communication objective and one core message that advances the overall argument. Condense and reorganize source material into concise presentation language and meaningful visual structures instead of transferring Word paragraphs onto slides. Ensure the deck works as a coherent presentation, not merely a collection of attractive pages.
+- **Presentation design:** Use clear visual hierarchy, purposeful grouping, balanced composition, whitespace, alignment, and readable typography. Use charts, diagrams, comparisons, and relevant images when they improve understanding. Maintain a consistent visual identity with varied compositions appropriate to the audience and purpose. Avoid decorative clutter, excessive text, generic layouts, and low-quality imagery. Prefer native editable PowerPoint text, shapes, tables, and charts; use high-quality generated or rendered images when the visual warrants them.
+- **Review and delivery:** For Word documents, ensure the generated content is reasonable, complete, logically coherent, and consistent with the requested structure and template. Verify successful file generation and use content or document-structure checks as needed. Rendering, previewing, and page-by-page layout inspection are not required for Word delivery; leave pagination, layout, and visual refinements to the user unless explicitly requested. For PowerPoint presentations, successful code execution alone is not verification: render and inspect all slides for overflow, alignment, contrast, image quality, visual consistency, and readability, and fix identified issues where tools allow. Keep final files free of editing comments and process explanations. Report any remaining issues or verification limitations in the chat, and prioritize usable professional quality over decoration or unnecessary complexity.
