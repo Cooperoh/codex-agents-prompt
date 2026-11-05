@@ -14,9 +14,17 @@
 
 ## Shared Node.js Dependencies
 
-- Default to the shared Node.js toolchain and dependencies in `D:\Node` for new projects, existing projects, and temporary scripts. Use project `node_modules` junctions instead of separate dependency installations.
-- Manage shared dependencies centrally with pnpm and pinned versions; preserve project manifests and lockfiles, and verify affected projects after changes. Do not install dependencies through a project junction.
+- Default to the shared Node.js toolchain and dependencies in `D:\Node` for new projects, existing projects, and temporary scripts. Resolve dependencies from `D:\Node\node_modules` directly; do not create `node_modules` directories, junctions, or symbolic links inside projects or workspaces, including temporary ones.
+- Manage shared dependencies centrally with pnpm and pinned versions; preserve project manifests and lockfiles, and verify affected projects after changes. Run dependency installations only in `D:\Node` or the selected shared environment, never in project directories. Configure build tools, module resolution, and caches to use the shared locations without recreating project `node_modules`.
 - Handle incompatible requirements under `D:\Node\environments` and preserve application-managed runtimes and bundled dependencies. See `D:\Node\README.md` for activation and operational details.
+
+## GitHub Synchronization Directory
+
+- Prepare every GitHub upload or synchronization in a repository cloned under `D:\GithubSync`. Use `D:\GithubSync\<repository-name>` by default; distinguish different owners when repository names collide. Reuse an existing matching clone after checking its remote and working-tree state, and record the source-directory-to-clone mapping under `D:\GithubSync`.
+- Keep original working directories as source-only directories. Do not initialize or clone repositories there, or create `.git` directories, Git pointer files, worktree links, or Git directory junctions. Keep Git/GitHub-specific files such as `.gitignore`, `.gitattributes`, `.gitmodules`, and `.github` in the synchronization clone by default.
+- Copy only the intended source files into the synchronization clone using an explicit file list. Exclude dependencies, caches, secrets, and temporary artifacts; preserve clone-only repository metadata and remote-only files. Review changes and handle intended deletions explicitly instead of using destructive mirror synchronization.
+- Perform Git fetch, merge, commit, and push operations in the synchronization clone. When using GitHub connectors or APIs, publish the reviewed content from this clone as well. Creating or updating these rules does not by itself authorize a remote push.
+- Before moving existing Git metadata out of an original working directory, inspect and preserve local commits, stashes, remotes, worktrees, submodules, and uncommitted work. Back up first and verify the copied source files before removing metadata from the original directory. Do not migrate unrelated repositories automatically.
 
 ## Office Document and Presentation Writing Policy
 
