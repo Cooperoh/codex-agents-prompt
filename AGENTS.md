@@ -20,7 +20,7 @@
 
 ## GitHub Synchronization Directory
 
-- Prepare every GitHub upload or synchronization in a repository cloned under `D:\GithubSync`. Use `D:\GithubSync\<repository-name>` by default; distinguish different owners when repository names collide. Reuse an existing matching clone after checking its remote and working-tree state, and record the source-directory-to-clone mapping under `D:\GithubSync`.
+- Prepare every GitHub upload or synchronization in a repository cloned under `D:\GitRepos`. Use `D:\GitRepos\<repository-name>` by default; distinguish different owners when repository names collide. Reuse an existing matching clone after checking its remote and working-tree state, and record the source-directory-to-clone mapping under `D:\GitRepos`.
 - Keep original working directories as source-only directories. Do not initialize or clone repositories there, or create `.git` directories, Git pointer files, worktree links, or Git directory junctions. Keep Git/GitHub-specific files such as `.gitignore`, `.gitattributes`, `.gitmodules`, and `.github` in the synchronization clone by default.
 - Copy only the intended source files into the synchronization clone using an explicit file list. Exclude dependencies, caches, secrets, and temporary artifacts; preserve clone-only repository metadata and remote-only files. Review changes and handle intended deletions explicitly instead of using destructive mirror synchronization.
 - Perform Git fetch, merge, commit, and push operations in the synchronization clone. When using GitHub connectors or APIs, publish the reviewed content from this clone as well. Creating or updating these rules does not by itself authorize a remote push.
